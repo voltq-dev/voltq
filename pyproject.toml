@@ -1,0 +1,62 @@
+[project]
+name = "voltq"
+version = "0.0.1"
+description = "An asynchronous, lightweight, and flexible task queue system for MQTT."
+authors = [
+    { name = "Sumit Kumar Singh", email = "sumit.here@outlook.com" },
+]
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License", # Or your chosen license
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Distributed Computing",
+]
+dependencies = [
+    "pytest-cov[dev]>=6.1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/voltq-dev/voltq" # Replace with your actual repo URL
+Repository = "https://github.com/voltq-dev/voltq"
+
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+    "ruff>=0.11.11",
+]
+
+# Tool configurations will go below
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312'] # Or your supported versions
+
+[tool.ruff]
+line-length = 88
+target-version = "py312" # Your minimum Python version
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F", "I", "C90", "N", "UP", "B", "A", "SIM", "PT", "RUF",
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --cov=src/voltq --cov-report=term-missing --cov-report=xml"
+testpaths = [
+    "tests",
+]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
